@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AmenitizSpend — Pay vendor invoices without the chaos</title>
-  <meta name="description" content="A 5-minute demo of AmenitizSpend, and a quick survey to shape what we build next.">
+  <title>AmenitizSpend — Vendor invoices and payments, in one place</title>
+  <meta name="description" content="A 5-minute walkthrough of AmenitizSpend, and a short survey to shape what we build next.">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -66,6 +66,9 @@
       mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 80%);
       -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 80%);
     }
+
+    /* Language select */
+    .lang-select { appearance: none; -webkit-appearance: none; -moz-appearance: none; }
   </style>
 </head>
 <body class="bg-white text-slate-900 antialiased">
@@ -79,16 +82,28 @@
         <div class="text-xl font-bold tracking-tight text-slate-900">amenitiz</div>
         <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200">
           <span class="w-1.5 h-1.5 rounded-full bg-blue-600 pulse-dot"></span>
-          Lab
+          <span data-i18n="hdr.lab">Lab</span>
         </span>
       </div>
-      <div class="flex items-center gap-2">
-        <a href="#survey" class="hidden sm:inline-flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition">
+      <div class="flex items-center gap-1 sm:gap-2">
+        <!-- Language switcher -->
+        <div class="relative">
+          <select id="langSelect" data-i18n-aria-label="hdr.lang_label" aria-label="Language"
+            class="lang-select pl-3 pr-7 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-100 bg-transparent border-0 cursor-pointer transition">
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+            <option value="it">IT</option>
+            <option value="fr">FR</option>
+            <option value="pt">PT</option>
+          </select>
+          <svg class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 w-3 h-3 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <a href="#survey" class="hidden sm:inline-flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-semibold text-slate-700 hover:text-slate-900 hover:bg-slate-100 transition" data-i18n="hdr.take_survey">
           Take the survey
         </a>
         <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="btn-primary inline-flex items-center gap-2 px-4 py-2 rounded-lg text-white font-semibold text-sm">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          Book 30 min with me
+          <span data-i18n="hdr.book_call">Book 30 min with me</span>
         </a>
       </div>
     </div>
@@ -106,25 +121,25 @@
         <div class="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-emerald-600 text-white mb-8 shadow-xl shadow-emerald-500/30">
           <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <h1 class="text-5xl font-bold tracking-tight mb-4">Thank you.</h1>
-        <p class="text-xl text-slate-600 mb-2">Your answers are in. I'll read every one.</p>
-        <p class="text-slate-600 mb-8">I'll share back what I heard from other hoteliers in about three weeks.</p>
+        <h1 class="text-5xl font-bold tracking-tight mb-4" data-i18n="ty.title">Thank you.</h1>
+        <p class="text-xl text-slate-600 mb-2" data-i18n="ty.body">Your answers are in. I'll read every one.</p>
+        <p class="text-slate-600 mb-8" data-i18n="ty.share">I'll share back what I heard from other hoteliers in about three weeks.</p>
 
         <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl p-8 md:p-10 text-white text-left shadow-xl shadow-blue-900/30 mt-10">
           <div class="flex items-start gap-5 flex-wrap">
             <img src="giulio.jpg" alt="Giulio" class="w-16 h-16 rounded-2xl object-cover flex-shrink-0 border-2 border-white/30">
             <div class="flex-1 min-w-0">
-              <div class="font-semibold mb-1">If you want to talk it through</div>
-              <p class="text-white/90 leading-relaxed mb-5">A conversation is often more useful than a survey. If any of your answers deserve more room, grab 30 minutes with me.</p>
+              <div class="font-semibold mb-1" data-i18n="ty.card_title">If you want to talk it through</div>
+              <p class="text-white/90 leading-relaxed mb-5" data-i18n="ty.card_body">A conversation is often more useful than a survey. If any of your answers deserve more room, grab 30 minutes with me.</p>
               <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-blue-700 font-semibold hover:bg-blue-50 transition shadow-md">
                 <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                Book 30 min with me
+                <span data-i18n="ty.card_book">Book 30 min with me</span>
               </a>
             </div>
           </div>
         </div>
 
-        <p class="mt-10 text-slate-500 text-sm">— Giulio</p>
+        <p class="mt-10 text-slate-500 text-sm" data-i18n="ty.signoff">— Giulio</p>
       </div>
     </section>
   </div>
@@ -147,45 +162,45 @@
         <div class="reveal">
           <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-200 text-xs font-semibold text-slate-700 mb-6 shadow-sm">
             <span class="w-1.5 h-1.5 rounded-full bg-blue-600 pulse-dot"></span>
-            Research prototype
+            <span data-i18n="hero.pill">Research prototype</span>
           </span>
           <h1 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 leading-[1.05]">
             AmenitizSpend
           </h1>
-          <p class="text-xl md:text-2xl text-slate-700 mb-8 leading-snug max-w-xl">
+          <p class="text-xl md:text-2xl text-slate-700 mb-8 leading-snug max-w-xl" data-i18n="hero.subtitle">
             Vendor invoices and payments, in one place.
           </p>
           <ol class="space-y-3.5 mb-10 text-slate-700 text-base md:text-lg max-w-xl">
             <li class="flex gap-3">
               <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-bold text-sm flex items-center justify-center mt-1">1</span>
-              <span>All your vendor invoices and receipts in one place.</span>
+              <span data-i18n="hero.point1">All your vendor invoices and receipts in one place.</span>
             </li>
             <li class="flex gap-3">
               <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-bold text-sm flex items-center justify-center mt-1">2</span>
-              <span>Pay vendors in one click — straight from your AmenitizPay balance, or, if you'd rather keep money in your bank, through Open Banking.</span>
+              <span data-i18n="hero.point2">Pay vendors in one click — straight from your AmenitizPay balance, or, if you'd rather keep money in your bank, through Open Banking.</span>
             </li>
             <li class="flex gap-3">
               <span class="flex-shrink-0 w-6 h-6 rounded-full bg-blue-100 text-blue-700 font-bold text-sm flex items-center justify-center mt-1">3</span>
-              <span>Invoices and payments matched automatically, ready to export to your accounting software.</span>
+              <span data-i18n="hero.point3">Invoices and payments matched automatically, ready to export to your accounting software.</span>
             </li>
           </ol>
           <div class="flex flex-wrap gap-3 items-center">
             <a href="#video" class="btn-primary inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-semibold">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              Watch the 5-min walkthrough
+              <span data-i18n="hero.watch">Watch the 5-min walkthrough</span>
             </a>
             <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="btn-secondary inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-slate-900 font-semibold border border-slate-200 bg-white">
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              Book 30 min with me
+              <span data-i18n="hero.book">Book 30 min with me</span>
             </a>
             <a href="#survey" class="inline-flex items-center gap-1 text-sm text-slate-600 hover:text-slate-900 hover:underline font-medium">
-              Take the survey instead
+              <span data-i18n="hero.survey_instead">Take the survey instead</span>
               <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Product mockup -->
+        <!-- Product mockup (kept in English intentionally) -->
         <div class="relative reveal">
           <div class="absolute -inset-6 bg-gradient-to-br from-blue-400/20 via-indigo-400/15 to-purple-400/20 rounded-[2.5rem] blur-3xl"></div>
           <div class="relative float-y bg-white rounded-2xl shadow-2xl shadow-slate-900/10 border border-slate-200 overflow-hidden">
@@ -271,8 +286,8 @@
 
       <div class="max-w-5xl mx-auto px-6">
         <div class="text-center mb-12 reveal">
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-3 leading-[1.15]">5-minute walkthrough</h2>
-          <p class="text-base text-slate-600 max-w-xl mx-auto leading-relaxed">How AmenitizSpend actually works.</p>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-3 leading-[1.15]" data-i18n="video.title">5-minute walkthrough</h2>
+          <p class="text-base text-slate-600 max-w-xl mx-auto leading-relaxed" data-i18n="video.subtitle">How AmenitizSpend actually works.</p>
         </div>
 
         <div class="relative reveal">
@@ -301,20 +316,20 @@
 
             <div class="flex-1">
               <div class="text-sm font-semibold opacity-90 mb-1">Giulio Caggiano</div>
-              <div class="text-xs uppercase tracking-widest opacity-70 mb-5">Product Manager · Amenitiz</div>
-              <p class="text-lg md:text-xl leading-relaxed text-white/95 mb-7">
+              <div class="text-xs uppercase tracking-widest opacity-70 mb-5" data-i18n="pm.role">Product Manager · Amenitiz</div>
+              <p class="text-lg md:text-xl leading-relaxed text-white/95 mb-7" data-i18n="pm.body">
                 Before we invest more in building this, I want to know if it's actually solving a real problem for you. A 30-minute call would help me most — I'd like to hear how you handle vendor payments today. If time is short, the survey below works too.
               </p>
-              <p class="text-sm text-white/80 mb-5">
+              <p class="text-sm text-white/80 mb-5" data-i18n="pm.reciprocal">
                 Whichever you pick, I'll share back a summary of what I hear from other hoteliers in about three weeks.
               </p>
               <div class="flex flex-wrap gap-3 items-center">
                 <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white text-blue-700 font-semibold hover:bg-blue-50 transition shadow-lg shadow-blue-900/20">
                   <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  Book 30 min with me
+                  <span data-i18n="pm.book">Book 30 min with me</span>
                 </a>
                 <a href="#survey" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-white/40 text-white font-semibold hover:bg-white/10 transition">
-                  Take the survey instead
+                  <span data-i18n="pm.survey_instead">Take the survey instead</span>
                   <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
                 </a>
               </div>
@@ -328,12 +343,13 @@
     <section id="survey" class="pt-16 pb-20 md:pt-20 md:pb-28 bg-slate-50">
       <div class="max-w-3xl mx-auto px-6">
         <div class="mb-14 reveal">
-          <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-3 leading-[1.15]">A few questions, if you'd rather write than talk</h2>
-          <p class="text-base text-slate-600">16 short questions. About 2 minutes. Or <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="text-blue-700 hover:underline font-medium">book 30 minutes with me</a> instead.</p>
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-3 leading-[1.15]" data-i18n="srv.title">A few questions, if you'd rather write than talk</h2>
+          <p class="text-base text-slate-600" data-i18n-html="srv.subtitle_html">16 short questions. About 2 minutes. Or <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="text-blue-700 hover:underline font-medium">book 30 minutes with me</a> instead.</p>
         </div>
 
         <form name="amenitizspend-survey" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="?submitted=1" class="space-y-10 reveal">
           <input type="hidden" name="form-name" value="amenitizspend-survey">
+          <input type="hidden" name="language" value="en">
           <p class="hidden">
             <label>Leave this field empty: <input name="bot-field"></label>
           </p>
@@ -343,19 +359,19 @@
             <div class="flex items-center gap-3 mb-7">
               <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow-md shadow-blue-500/30">A</div>
               <div>
-                <h3 class="font-bold text-lg tracking-tight">About you</h3>
-                <div class="text-xs text-slate-500">2 questions</div>
+                <h3 class="font-bold text-lg tracking-tight" data-i18n="sA.title">About you</h3>
+                <div class="text-xs text-slate-500" data-i18n="sA.count">2 questions</div>
               </div>
             </div>
 
             <div class="space-y-6">
               <div>
-                <label for="hotel_name" class="block text-sm font-semibold mb-2">1. Hotel name and number of rooms</label>
-                <input type="text" id="hotel_name" name="hotel_name" placeholder="e.g. Hotel Santorini · 18 rooms" required class="field-input w-full px-4 py-3 border border-slate-300 rounded-xl text-[15px]">
+                <label for="hotel_name" class="block text-sm font-semibold mb-2" data-i18n="q1.label">1. Hotel name and number of rooms</label>
+                <input type="text" id="hotel_name" name="hotel_name" data-i18n-placeholder="q1.ph" placeholder="e.g. Hotel Santorini · 18 rooms" required class="field-input w-full px-4 py-3 border border-slate-300 rounded-xl text-[15px]">
               </div>
               <div>
-                <label for="role" class="block text-sm font-semibold mb-2">2. Your role</label>
-                <input type="text" id="role" name="role" placeholder="e.g. Owner, GM, Receptionist" required class="field-input w-full px-4 py-3 border border-slate-300 rounded-xl text-[15px]">
+                <label for="role" class="block text-sm font-semibold mb-2" data-i18n="q2.label">2. Your role</label>
+                <input type="text" id="role" name="role" data-i18n-placeholder="q2.ph" placeholder="e.g. Owner, GM, Receptionist" required class="field-input w-full px-4 py-3 border border-slate-300 rounded-xl text-[15px]">
               </div>
             </div>
           </div>
@@ -365,27 +381,27 @@
             <div class="flex items-center gap-3 mb-7">
               <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow-md shadow-blue-500/30">B</div>
               <div>
-                <h3 class="font-bold text-lg tracking-tight">How you pay vendors today</h3>
-                <div class="text-xs text-slate-500">5 questions</div>
+                <h3 class="font-bold text-lg tracking-tight" data-i18n="sB.title">How you pay vendors today</h3>
+                <div class="text-xs text-slate-500" data-i18n="sB.count">5 questions</div>
               </div>
             </div>
 
             <div class="space-y-8">
               <!-- Q3 -->
               <div>
-                <label class="block text-sm font-semibold mb-3">3. How do most of your vendor invoices arrive today? <span class="text-slate-400 font-normal">(pick all that apply)</span></label>
+                <label class="block text-sm font-semibold mb-3" data-i18n-html="q3.label_html">3. How do most of your vendor invoices arrive today? <span class="text-slate-400 font-normal">(pick all that apply)</span></label>
                 <div class="grid sm:grid-cols-2 gap-2">
-                  <label class="relative block"><input type="checkbox" name="invoice_arrival_email_pdf" value="yes" class="opt-input"><span class="opt-card flex items-center gap-3 px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]"><svg class="w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email — PDF attachment</span></label>
-                  <label class="relative block"><input type="checkbox" name="invoice_arrival_paper" value="yes" class="opt-input"><span class="opt-card flex items-center gap-3 px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]"><svg class="w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>Paper · post or hand-delivered</span></label>
-                  <label class="relative block"><input type="checkbox" name="invoice_arrival_in_person" value="yes" class="opt-input"><span class="opt-card flex items-center gap-3 px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]"><svg class="w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>In person · driver / supplier</span></label>
-                  <label class="relative block"><input type="checkbox" name="invoice_arrival_portal" value="yes" class="opt-input"><span class="opt-card flex items-center gap-3 px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]"><svg class="w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Supplier portal</span></label>
-                  <label class="relative block sm:col-span-2"><input type="checkbox" name="invoice_arrival_other" value="yes" class="opt-input"><span class="opt-card flex items-center gap-3 px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]"><svg class="w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>Other</span></label>
+                  <label class="relative block"><input type="checkbox" name="invoice_arrival_email_pdf" value="yes" class="opt-input"><span class="opt-card flex items-center gap-3 px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]"><svg class="w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span data-i18n="q3.opt.email">Email — PDF attachment</span></span></label>
+                  <label class="relative block"><input type="checkbox" name="invoice_arrival_paper" value="yes" class="opt-input"><span class="opt-card flex items-center gap-3 px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]"><svg class="w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span data-i18n="q3.opt.paper">Paper · post or hand-delivered</span></span></label>
+                  <label class="relative block"><input type="checkbox" name="invoice_arrival_in_person" value="yes" class="opt-input"><span class="opt-card flex items-center gap-3 px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]"><svg class="w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg><span data-i18n="q3.opt.person">In person · driver / supplier</span></span></label>
+                  <label class="relative block"><input type="checkbox" name="invoice_arrival_portal" value="yes" class="opt-input"><span class="opt-card flex items-center gap-3 px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]"><svg class="w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span data-i18n="q3.opt.portal">Supplier portal</span></span></label>
+                  <label class="relative block sm:col-span-2"><input type="checkbox" name="invoice_arrival_other" value="yes" class="opt-input"><span class="opt-card flex items-center gap-3 px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]"><svg class="w-5 h-5 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg><span data-i18n="q3.opt.other">Other</span></span></label>
                 </div>
               </div>
 
               <!-- Q4 -->
               <div>
-                <label class="block text-sm font-semibold mb-3">4. Roughly how many vendor invoices do you handle per month?</label>
+                <label class="block text-sm font-semibold mb-3" data-i18n="q4.label">4. Roughly how many vendor invoices do you handle per month?</label>
                 <div class="grid sm:grid-cols-4 gap-2">
                   <label class="relative block"><input type="radio" name="invoice_volume" value="1-5" required class="opt-input"><span class="opt-card block text-center px-4 py-3 border border-slate-200 rounded-xl cursor-pointer font-semibold text-[15px]">1–5</span></label>
                   <label class="relative block"><input type="radio" name="invoice_volume" value="6-15" class="opt-input"><span class="opt-card block text-center px-4 py-3 border border-slate-200 rounded-xl cursor-pointer font-semibold text-[15px]">6–15</span></label>
@@ -396,29 +412,29 @@
 
               <!-- Q5 -->
               <div>
-                <label for="prioritize_when_tight" class="block text-sm font-semibold mb-2">5. When cash is tight, how do you decide what to pay first?</label>
-                <p class="text-xs text-slate-500 mb-2">The honest version. There's no right answer.</p>
+                <label for="prioritize_when_tight" class="block text-sm font-semibold mb-2" data-i18n="q5.label">5. When cash is tight, how do you decide what to pay first?</label>
+                <p class="text-xs text-slate-500 mb-2" data-i18n="q5.hint">The honest version. There's no right answer.</p>
                 <textarea id="prioritize_when_tight" name="prioritize_when_tight" rows="3" class="field-input w-full px-4 py-3 border border-slate-300 rounded-xl text-[15px] resize-y"></textarea>
               </div>
 
               <!-- Q6 -->
               <div>
-                <label class="block text-sm font-semibold mb-3">6. Pick the <em class="not-italic underline decoration-blue-400 decoration-2 underline-offset-2">single most annoying</em> part of paying vendor invoices</label>
+                <label class="block text-sm font-semibold mb-3" data-i18n-html="q6.label_html">6. Pick the <em class="not-italic underline decoration-blue-400 decoration-2 underline-offset-2">single most annoying</em> part of paying vendor invoices</label>
                 <div class="space-y-2">
-                  <label class="relative block"><input type="radio" name="most_annoying" value="tracking_due" required class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]">Tracking what's due and when</span></label>
-                  <label class="relative block"><input type="radio" name="most_annoying" value="bank_one_by_one" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]">Paying one by one through the bank</span></label>
-                  <label class="relative block"><input type="radio" name="most_annoying" value="reconciling_dd" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]">Reconciling direct debits to invoices</span></label>
-                  <label class="relative block"><input type="radio" name="most_annoying" value="accounting_prep" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]">Preparing data for the accountant</span></label>
-                  <label class="relative block"><input type="radio" name="most_annoying" value="other" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]">Something else</span></label>
+                  <label class="relative block"><input type="radio" name="most_annoying" value="tracking_due" required class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]" data-i18n="q6.opt.tracking">Tracking what's due and when</span></label>
+                  <label class="relative block"><input type="radio" name="most_annoying" value="bank_one_by_one" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]" data-i18n="q6.opt.bank">Paying one by one through the bank</span></label>
+                  <label class="relative block"><input type="radio" name="most_annoying" value="reconciling_dd" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]" data-i18n="q6.opt.reconciling">Reconciling direct debits to invoices</span></label>
+                  <label class="relative block"><input type="radio" name="most_annoying" value="accounting_prep" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]" data-i18n="q6.opt.accounting">Preparing data for the accountant</span></label>
+                  <label class="relative block"><input type="radio" name="most_annoying" value="other" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]" data-i18n="q6.opt.other">Something else</span></label>
                 </div>
               </div>
 
               <!-- Q7 -->
               <div>
-                <label class="block text-sm font-semibold mb-2">7. How much of a problem is your current process?</label>
+                <label class="block text-sm font-semibold mb-2" data-i18n="q7.label">7. How much of a problem is your current process?</label>
                 <p class="text-xs text-slate-500 mb-3 flex items-center justify-between">
-                  <span>1 — not really</span>
-                  <span>5 — a real problem</span>
+                  <span data-i18n="q7.low">1 — not really</span>
+                  <span data-i18n="q7.high">5 — a real problem</span>
                 </p>
                 <div class="grid grid-cols-5 gap-2">
                   <label class="relative block"><input type="radio" name="pain_score" value="1" required class="scale-input"><span class="scale-pill block text-center px-4 py-3.5 border border-slate-200 rounded-xl cursor-pointer font-bold text-lg">1</span></label>
@@ -436,18 +452,18 @@
             <div class="flex items-center gap-3 mb-7">
               <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow-md shadow-blue-500/30">C</div>
               <div>
-                <h3 class="font-bold text-lg tracking-tight">Your reaction to AmenitizSpend</h3>
-                <div class="text-xs text-slate-500">3 questions</div>
+                <h3 class="font-bold text-lg tracking-tight" data-i18n="sC.title">Your reaction to AmenitizSpend</h3>
+                <div class="text-xs text-slate-500" data-i18n="sC.count">3 questions</div>
               </div>
             </div>
 
             <div class="space-y-8">
               <!-- Q8 -->
               <div>
-                <label class="block text-sm font-semibold mb-2">8. After watching the walkthrough, how useful does this look for your hotel?</label>
+                <label class="block text-sm font-semibold mb-2" data-i18n="q8.label">8. After watching the walkthrough, how useful does this look for your hotel?</label>
                 <p class="text-xs text-slate-500 mb-3 flex items-center justify-between">
-                  <span>1 — not useful</span>
-                  <span>5 — very useful</span>
+                  <span data-i18n="q8.low">1 — not useful</span>
+                  <span data-i18n="q8.high">5 — very useful</span>
                 </p>
                 <div class="grid grid-cols-5 gap-2">
                   <label class="relative block"><input type="radio" name="excitement_score" value="1" required class="scale-input"><span class="scale-pill block text-center px-4 py-3.5 border border-slate-200 rounded-xl cursor-pointer font-bold text-lg">1</span></label>
@@ -460,25 +476,25 @@
 
               <!-- Q9 -->
               <div>
-                <label class="block text-sm font-semibold mb-3">9. Which parts stood out as most useful? <span class="text-slate-400 font-normal">(pick any)</span></label>
+                <label class="block text-sm font-semibold mb-3" data-i18n-html="q9.label_html">9. Which parts stood out as most useful? <span class="text-slate-400 font-normal">(pick any)</span></label>
                 <div class="grid sm:grid-cols-2 gap-2">
-                  <label class="relative block"><input type="checkbox" name="useful_invoice_import" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]">Invoice import — drop a PDF</span></label>
-                  <label class="relative block"><input type="checkbox" name="useful_one_click_pay" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]">One-click pay from wallet</span></label>
-                  <label class="relative block"><input type="checkbox" name="useful_dd_match" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]">Direct debit auto-match</span></label>
-                  <label class="relative block"><input type="checkbox" name="useful_cashflow" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]">Cash-flow forecast</span></label>
-                  <label class="relative block"><input type="checkbox" name="useful_mode" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]">Manual / automatic payouts</span></label>
-                  <label class="relative block"><input type="checkbox" name="useful_export" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]">Export to accounting</span></label>
+                  <label class="relative block"><input type="checkbox" name="useful_invoice_import" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]" data-i18n="q9.opt.import">Invoice import — drop a PDF</span></label>
+                  <label class="relative block"><input type="checkbox" name="useful_one_click_pay" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]" data-i18n="q9.opt.oneclick">One-click pay from wallet</span></label>
+                  <label class="relative block"><input type="checkbox" name="useful_dd_match" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]" data-i18n="q9.opt.ddmatch">Direct debit auto-match</span></label>
+                  <label class="relative block"><input type="checkbox" name="useful_cashflow" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]" data-i18n="q9.opt.cashflow">Cash-flow forecast</span></label>
+                  <label class="relative block"><input type="checkbox" name="useful_mode" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]" data-i18n="q9.opt.mode">Manual / automatic payouts</span></label>
+                  <label class="relative block"><input type="checkbox" name="useful_export" value="yes" class="opt-input"><span class="opt-card block px-4 py-3 border border-slate-200 rounded-xl cursor-pointer text-[15px]" data-i18n="q9.opt.export">Export to accounting</span></label>
                 </div>
               </div>
 
               <!-- Q10 conditional -->
               <div id="q10_high" class="conditional-q">
-                <label for="why_exciting" class="block text-sm font-semibold mb-2">10. What part looks most useful, and why?</label>
+                <label for="why_exciting" class="block text-sm font-semibold mb-2" data-i18n="q10.high_label">10. What part looks most useful, and why?</label>
                 <textarea id="why_exciting" name="why_exciting" rows="3" class="field-input w-full px-4 py-3 border border-slate-300 rounded-xl text-[15px] resize-y"></textarea>
               </div>
               <div id="q10_low" class="conditional-q">
-                <label for="whats_missing" class="block text-sm font-semibold mb-2">10. What's missing, unclear, or not quite right?</label>
-                <p class="text-xs text-slate-500 mb-2">Specifics help most.</p>
+                <label for="whats_missing" class="block text-sm font-semibold mb-2" data-i18n="q10.low_label">10. What's missing, unclear, or not quite right?</label>
+                <p class="text-xs text-slate-500 mb-2" data-i18n="q10.low_hint">Specifics help most.</p>
                 <textarea id="whats_missing" name="whats_missing" rows="3" class="field-input w-full px-4 py-3 border border-slate-300 rounded-xl text-[15px] resize-y"></textarea>
               </div>
             </div>
@@ -489,22 +505,22 @@
             <div class="flex items-center gap-3 mb-5">
               <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow-md shadow-blue-500/30">D</div>
               <div>
-                <h3 class="font-bold text-lg tracking-tight">Pricing</h3>
-                <div class="text-xs text-slate-500">4 questions about your price sensitivity</div>
+                <h3 class="font-bold text-lg tracking-tight" data-i18n="sD.title">Pricing</h3>
+                <div class="text-xs text-slate-500" data-i18n="sD.count">4 questions about your price sensitivity</div>
               </div>
             </div>
 
-            <p class="text-sm text-slate-600 mb-6">
+            <p class="text-sm text-slate-600 mb-6" data-i18n-html="sD.intro_html">
               The idea is a small fee per <strong class="text-slate-900">transaction</strong> — one invoice processed or one payment issued, whichever comes first (a matched invoice + payment counts as one).
             </p>
 
-            <div id="monthlyHint" class="hidden mb-5 text-xs text-slate-600 bg-slate-100 border border-slate-200 rounded-lg px-3 py-2">
+            <div id="monthlyHint" class="hidden mb-5 text-xs text-slate-600 bg-slate-100 border border-slate-200 rounded-lg px-3 py-2" data-i18n="sD.monthly_hint">
               Answer question 4 first and each price will show what it means per month.
             </div>
             <div class="grid sm:grid-cols-2 gap-5">
               <div>
-                <label for="price_too_cheap" class="block text-sm font-semibold mb-1">11. Price that feels <span class="text-blue-700">too cheap</span></label>
-                <p class="text-xs text-slate-500 mb-2">So cheap you'd doubt it works</p>
+                <label for="price_too_cheap" class="block text-sm font-semibold mb-1" data-i18n-html="q11.label_html">11. Price that feels <span class="text-blue-700">too cheap</span></label>
+                <p class="text-xs text-slate-500 mb-2" data-i18n="q11.hint">So cheap you'd doubt it works</p>
                 <div class="flex items-center border border-slate-300 rounded-xl bg-white field-input-wrap">
                   <span class="px-4 text-slate-500 font-medium">€</span>
                   <input type="number" step="0.01" min="0" id="price_too_cheap" name="price_too_cheap" placeholder="0.50" required class="flex-1 px-2 py-3 outline-none bg-transparent text-[15px]">
@@ -512,8 +528,8 @@
                 <div id="price_too_cheap_monthly" class="monthly-preview hidden mt-2 text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5"></div>
               </div>
               <div>
-                <label for="price_cheap" class="block text-sm font-semibold mb-1">12. Price that feels <span class="text-blue-700">cheap</span></label>
-                <p class="text-xs text-slate-500 mb-2">A clear bargain</p>
+                <label for="price_cheap" class="block text-sm font-semibold mb-1" data-i18n-html="q12.label_html">12. Price that feels <span class="text-blue-700">cheap</span></label>
+                <p class="text-xs text-slate-500 mb-2" data-i18n="q12.hint">A clear bargain</p>
                 <div class="flex items-center border border-slate-300 rounded-xl bg-white">
                   <span class="px-4 text-slate-500 font-medium">€</span>
                   <input type="number" step="0.01" min="0" id="price_cheap" name="price_cheap" placeholder="1.00" required class="flex-1 px-2 py-3 outline-none bg-transparent text-[15px]">
@@ -521,8 +537,8 @@
                 <div id="price_cheap_monthly" class="monthly-preview hidden mt-2 text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5"></div>
               </div>
               <div>
-                <label for="price_expensive" class="block text-sm font-semibold mb-1">13. Price that feels <span class="text-blue-700">expensive</span></label>
-                <p class="text-xs text-slate-500 mb-2">You'd think twice but might still pay</p>
+                <label for="price_expensive" class="block text-sm font-semibold mb-1" data-i18n-html="q13.label_html">13. Price that feels <span class="text-blue-700">expensive</span></label>
+                <p class="text-xs text-slate-500 mb-2" data-i18n="q13.hint">You'd think twice but might still pay</p>
                 <div class="flex items-center border border-slate-300 rounded-xl bg-white">
                   <span class="px-4 text-slate-500 font-medium">€</span>
                   <input type="number" step="0.01" min="0" id="price_expensive" name="price_expensive" placeholder="3.00" required class="flex-1 px-2 py-3 outline-none bg-transparent text-[15px]">
@@ -530,8 +546,8 @@
                 <div id="price_expensive_monthly" class="monthly-preview hidden mt-2 text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5"></div>
               </div>
               <div>
-                <label for="price_too_expensive" class="block text-sm font-semibold mb-1">14. Price that feels <span class="text-blue-700">too expensive</span></label>
-                <p class="text-xs text-slate-500 mb-2">You wouldn't consider it</p>
+                <label for="price_too_expensive" class="block text-sm font-semibold mb-1" data-i18n-html="q14.label_html">14. Price that feels <span class="text-blue-700">too expensive</span></label>
+                <p class="text-xs text-slate-500 mb-2" data-i18n="q14.hint">You wouldn't consider it</p>
                 <div class="flex items-center border border-slate-300 rounded-xl bg-white">
                   <span class="px-4 text-slate-500 font-medium">€</span>
                   <input type="number" step="0.01" min="0" id="price_too_expensive" name="price_too_expensive" placeholder="5.00" required class="flex-1 px-2 py-3 outline-none bg-transparent text-[15px]">
@@ -539,7 +555,7 @@
                 <div id="price_too_expensive_monthly" class="monthly-preview hidden mt-2 text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5"></div>
               </div>
             </div>
-            <p id="pricingWarning" class="hidden mt-4 text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+            <p id="pricingWarning" class="hidden mt-4 text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2" data-i18n-html="sD.warning_html">
               <strong>Heads up:</strong> your prices should rise from "too cheap" to "too expensive". Double-check the order.
             </p>
           </div>
@@ -549,27 +565,27 @@
             <div class="flex items-center gap-3 mb-7">
               <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white font-bold flex items-center justify-center text-sm shadow-md shadow-blue-500/30">E</div>
               <div>
-                <h3 class="font-bold text-lg tracking-tight">One last thing</h3>
-                <div class="text-xs text-slate-500">Then you're done</div>
+                <h3 class="font-bold text-lg tracking-tight" data-i18n="sE.title">One last thing</h3>
+                <div class="text-xs text-slate-500" data-i18n="sE.count">Then you're done</div>
               </div>
             </div>
 
             <div class="space-y-7">
               <div>
-                <label for="anything_else" class="block text-sm font-semibold mb-2">15. Anything else I should know?</label>
+                <label for="anything_else" class="block text-sm font-semibold mb-2" data-i18n="q15.label">15. Anything else I should know?</label>
                 <textarea id="anything_else" name="anything_else" rows="3" class="field-input w-full px-4 py-3 border border-slate-300 rounded-xl text-[15px] resize-y"></textarea>
               </div>
 
               <div>
-                <label class="block text-sm font-semibold mb-3">16. Prefer a conversation?</label>
+                <label class="block text-sm font-semibold mb-3" data-i18n="q16.label">16. Prefer a conversation?</label>
                 <div class="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-6 text-white">
                   <div class="flex items-start gap-4 flex-wrap">
                     <img src="giulio.jpg" alt="Giulio" class="w-14 h-14 rounded-xl object-cover flex-shrink-0 border-2 border-white/30">
                     <div class="flex-1 min-w-0">
-                      <p class="text-white/95 leading-relaxed mb-4">If any of your answers deserve more space, we can talk it through. 30 minutes, your slot.</p>
+                      <p class="text-white/95 leading-relaxed mb-4" data-i18n="q16.body">If any of your answers deserve more space, we can talk it through. 30 minutes, your slot.</p>
                       <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white text-blue-700 font-semibold hover:bg-blue-50 transition shadow-md">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                        Book 30 min with me
+                        <span data-i18n="q16.book">Book 30 min with me</span>
                       </a>
                     </div>
                   </div>
@@ -581,10 +597,10 @@
           <!-- Submit -->
           <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 pt-4">
             <button type="submit" class="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-white font-semibold text-base w-full sm:w-auto">
-              Send my answers
+              <span data-i18n="submit.btn">Send my answers</span>
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </button>
-            <p class="text-xs text-slate-500">2 minutes. Goes straight to Giulio.</p>
+            <p class="text-xs text-slate-500" data-i18n="submit.hint">2 minutes. Goes straight to Giulio.</p>
           </div>
         </form>
       </div>
@@ -595,10 +611,10 @@
       <div class="max-w-6xl mx-auto px-6 flex flex-wrap items-center justify-between gap-4 text-sm text-slate-500">
         <div class="flex items-center gap-3">
           <div class="text-base font-bold text-slate-900">amenitiz</div>
-          <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 px-2 py-0.5 rounded-full bg-slate-100">Lab</span>
-          <span>· prototype</span>
+          <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 px-2 py-0.5 rounded-full bg-slate-100" data-i18n="ft.lab">Lab</span>
+          <span data-i18n="ft.prototype">· prototype</span>
         </div>
-        <div>
+        <div data-i18n-html="ft.builtby_html">
           Built and shipped by Giulio · <a href="mailto:giulio@amenitiz.com" class="font-medium text-blue-700 hover:underline">giulio@amenitiz.com</a>
         </div>
       </div>
@@ -610,6 +626,563 @@
        JS
        ============================================================ -->
   <script>
+    // ========================================================================
+    // Translations (AI-generated — review with native speakers before mass-mailing non-English versions)
+    // ========================================================================
+    var T = {
+      en: {
+        "meta.title": "AmenitizSpend — Vendor invoices and payments, in one place",
+        "meta.description": "A 5-minute walkthrough of AmenitizSpend, and a short survey to shape what we build next.",
+        "hdr.lab": "Lab",
+        "hdr.take_survey": "Take the survey",
+        "hdr.book_call": "Book 30 min with me",
+        "hdr.lang_label": "Language",
+        "hero.pill": "Research prototype",
+        "hero.subtitle": "Vendor invoices and payments, in one place.",
+        "hero.point1": "All your vendor invoices and receipts in one place.",
+        "hero.point2": "Pay vendors in one click — straight from your AmenitizPay balance, or, if you'd rather keep money in your bank, through Open Banking.",
+        "hero.point3": "Invoices and payments matched automatically, ready to export to your accounting software.",
+        "hero.watch": "Watch the 5-min walkthrough",
+        "hero.book": "Book 30 min with me",
+        "hero.survey_instead": "Take the survey instead",
+        "video.title": "5-minute walkthrough",
+        "video.subtitle": "How AmenitizSpend actually works.",
+        "pm.role": "Product Manager · Amenitiz",
+        "pm.body": "Before we invest more in building this, I want to know if it's actually solving a real problem for you. A 30-minute call would help me most — I'd like to hear how you handle vendor payments today. If time is short, the survey below works too.",
+        "pm.reciprocal": "Whichever you pick, I'll share back a summary of what I hear from other hoteliers in about three weeks.",
+        "pm.book": "Book 30 min with me",
+        "pm.survey_instead": "Take the survey instead",
+        "srv.title": "A few questions, if you'd rather write than talk",
+        "srv.subtitle_html": `16 short questions. About 2 minutes. Or <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="text-blue-700 hover:underline font-medium">book 30 minutes with me</a> instead.`,
+        "sA.title": "About you",
+        "sA.count": "2 questions",
+        "q1.label": "1. Hotel name and number of rooms",
+        "q1.ph": "e.g. Hotel Santorini · 18 rooms",
+        "q2.label": "2. Your role",
+        "q2.ph": "e.g. Owner, GM, Receptionist",
+        "sB.title": "How you pay vendors today",
+        "sB.count": "5 questions",
+        "q3.label_html": `3. How do most of your vendor invoices arrive today? <span class="text-slate-400 font-normal">(pick all that apply)</span>`,
+        "q3.opt.email": "Email — PDF attachment",
+        "q3.opt.paper": "Paper · post or hand-delivered",
+        "q3.opt.person": "In person · driver / supplier",
+        "q3.opt.portal": "Supplier portal",
+        "q3.opt.other": "Other",
+        "q4.label": "4. Roughly how many vendor invoices do you handle per month?",
+        "q5.label": "5. When cash is tight, how do you decide what to pay first?",
+        "q5.hint": "The honest version. There's no right answer.",
+        "q6.label_html": `6. Pick the <em class="not-italic underline decoration-blue-400 decoration-2 underline-offset-2">single most annoying</em> part of paying vendor invoices`,
+        "q6.opt.tracking": "Tracking what's due and when",
+        "q6.opt.bank": "Paying one by one through the bank",
+        "q6.opt.reconciling": "Reconciling direct debits to invoices",
+        "q6.opt.accounting": "Preparing data for the accountant",
+        "q6.opt.other": "Something else",
+        "q7.label": "7. How much of a problem is your current process?",
+        "q7.low": "1 — not really",
+        "q7.high": "5 — a real problem",
+        "sC.title": "Your reaction to AmenitizSpend",
+        "sC.count": "3 questions",
+        "q8.label": "8. After watching the walkthrough, how useful does this look for your hotel?",
+        "q8.low": "1 — not useful",
+        "q8.high": "5 — very useful",
+        "q9.label_html": `9. Which parts stood out as most useful? <span class="text-slate-400 font-normal">(pick any)</span>`,
+        "q9.opt.import": "Invoice import — drop a PDF",
+        "q9.opt.oneclick": "One-click pay from wallet",
+        "q9.opt.ddmatch": "Direct debit auto-match",
+        "q9.opt.cashflow": "Cash-flow forecast",
+        "q9.opt.mode": "Manual / automatic payouts",
+        "q9.opt.export": "Export to accounting",
+        "q10.high_label": "10. What part looks most useful, and why?",
+        "q10.low_label": "10. What's missing, unclear, or not quite right?",
+        "q10.low_hint": "Specifics help most.",
+        "sD.title": "Pricing",
+        "sD.count": "4 questions about your price sensitivity",
+        "sD.intro_html": `The idea is a small fee per <strong class="text-slate-900">transaction</strong> — one invoice processed or one payment issued, whichever comes first (a matched invoice + payment counts as one).`,
+        "sD.monthly_hint": "Answer question 4 first and each price will show what it means per month.",
+        "q11.label_html": `11. Price that feels <span class="text-blue-700">too cheap</span>`,
+        "q11.hint": "So cheap you'd doubt it works",
+        "q12.label_html": `12. Price that feels <span class="text-blue-700">cheap</span>`,
+        "q12.hint": "A clear bargain",
+        "q13.label_html": `13. Price that feels <span class="text-blue-700">expensive</span>`,
+        "q13.hint": "You'd think twice but might still pay",
+        "q14.label_html": `14. Price that feels <span class="text-blue-700">too expensive</span>`,
+        "q14.hint": "You wouldn't consider it",
+        "sD.warning_html": `<strong>Heads up:</strong> your prices should rise from "too cheap" to "too expensive". Double-check the order.`,
+        "sE.title": "One last thing",
+        "sE.count": "Then you're done",
+        "q15.label": "15. Anything else I should know?",
+        "q16.label": "16. Prefer a conversation?",
+        "q16.body": "If any of your answers deserve more space, we can talk it through. 30 minutes, your slot.",
+        "q16.book": "Book 30 min with me",
+        "submit.btn": "Send my answers",
+        "submit.hint": "2 minutes. Goes straight to Giulio.",
+        "ty.title": "Thank you.",
+        "ty.body": "Your answers are in. I'll read every one.",
+        "ty.share": "I'll share back what I heard from other hoteliers in about three weeks.",
+        "ty.card_title": "If you want to talk it through",
+        "ty.card_body": "A conversation is often more useful than a survey. If any of your answers deserve more room, grab 30 minutes with me.",
+        "ty.card_book": "Book 30 min with me",
+        "ty.signoff": "— Giulio",
+        "ft.lab": "Lab",
+        "ft.prototype": "· prototype",
+        "ft.builtby_html": `Built and shipped by Giulio · <a href="mailto:giulio@amenitiz.com" class="font-medium text-blue-700 hover:underline">giulio@amenitiz.com</a>`,
+        "js.monthly_preview_html": `≈ <strong class="text-slate-900">€{amount}</strong> / month at ~{count} invoices (your volume: {volume})`
+      },
+      es: {
+        "meta.title": "AmenitizSpend — Facturas y pagos de proveedores, en un solo lugar",
+        "meta.description": "Un vídeo de 5 minutos de AmenitizSpend y una breve encuesta para orientar lo que construimos a continuación.",
+        "hdr.lab": "Lab",
+        "hdr.take_survey": "Responder la encuesta",
+        "hdr.book_call": "Reserva 30 min conmigo",
+        "hdr.lang_label": "Idioma",
+        "hero.pill": "Prototipo de investigación",
+        "hero.subtitle": "Facturas y pagos de proveedores, en un solo lugar.",
+        "hero.point1": "Todas tus facturas y recibos de proveedores en un solo lugar.",
+        "hero.point2": "Paga a tus proveedores en un clic — directamente desde tu saldo de AmenitizPay o, si prefieres mantener el dinero en tu banco, mediante Open Banking.",
+        "hero.point3": "Facturas y pagos conciliados automáticamente, listos para exportar a tu software de contabilidad.",
+        "hero.watch": "Ver el vídeo de 5 min",
+        "hero.book": "Reserva 30 min conmigo",
+        "hero.survey_instead": "Responder la encuesta",
+        "video.title": "Vídeo de 5 minutos",
+        "video.subtitle": "Cómo funciona AmenitizSpend en la práctica.",
+        "pm.role": "Product Manager · Amenitiz",
+        "pm.body": "Antes de seguir invirtiendo en construir esto, quiero saber si realmente resuelve un problema para ti. Una llamada de 30 minutos me ayudaría más — me gustaría escuchar cómo gestionas hoy los pagos a proveedores. Si andas justo de tiempo, la encuesta de abajo también sirve.",
+        "pm.reciprocal": "Elijas lo que elijas, te compartiré un resumen de lo que escuche de otros hoteleros en unas tres semanas.",
+        "pm.book": "Reserva 30 min conmigo",
+        "pm.survey_instead": "Responder la encuesta",
+        "srv.title": "Unas preguntas, si prefieres escribir a hablar",
+        "srv.subtitle_html": `16 preguntas cortas. Unos 2 minutos. O <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="text-blue-700 hover:underline font-medium">reserva 30 minutos conmigo</a>.`,
+        "sA.title": "Sobre ti",
+        "sA.count": "2 preguntas",
+        "q1.label": "1. Nombre del hotel y número de habitaciones",
+        "q1.ph": "p. ej. Hotel Santorini · 18 habitaciones",
+        "q2.label": "2. Tu puesto",
+        "q2.ph": "p. ej. Propietario, Director, Recepcionista",
+        "sB.title": "Cómo pagas a tus proveedores hoy",
+        "sB.count": "5 preguntas",
+        "q3.label_html": `3. ¿Cómo te llegan hoy la mayoría de las facturas de proveedores? <span class="text-slate-400 font-normal">(marca todas las que apliquen)</span>`,
+        "q3.opt.email": "Correo — PDF adjunto",
+        "q3.opt.paper": "Papel · correo postal o entregado en mano",
+        "q3.opt.person": "En persona · repartidor / proveedor",
+        "q3.opt.portal": "Portal del proveedor",
+        "q3.opt.other": "Otro",
+        "q4.label": "4. Aproximadamente, ¿cuántas facturas de proveedores gestionas al mes?",
+        "q5.label": "5. Cuando el efectivo escasea, ¿cómo decides qué pagar primero?",
+        "q5.hint": "La versión sincera. No hay respuesta correcta.",
+        "q6.label_html": `6. Elige la parte <em class="not-italic underline decoration-blue-400 decoration-2 underline-offset-2">más molesta</em> de pagar facturas de proveedores`,
+        "q6.opt.tracking": "Llevar el control de qué vence y cuándo",
+        "q6.opt.bank": "Pagar una a una desde el banco",
+        "q6.opt.reconciling": "Conciliar domiciliaciones con facturas",
+        "q6.opt.accounting": "Preparar los datos para el contable",
+        "q6.opt.other": "Otra cosa",
+        "q7.label": "7. ¿Cómo de problemático es tu proceso actual?",
+        "q7.low": "1 — no mucho",
+        "q7.high": "5 — un problema real",
+        "sC.title": "Tu reacción a AmenitizSpend",
+        "sC.count": "3 preguntas",
+        "q8.label": "8. Tras ver el vídeo, ¿cómo de útil te parece esto para tu hotel?",
+        "q8.low": "1 — nada útil",
+        "q8.high": "5 — muy útil",
+        "q9.label_html": `9. ¿Qué partes te han parecido más útiles? <span class="text-slate-400 font-normal">(marca las que quieras)</span>`,
+        "q9.opt.import": "Importar facturas — arrastrar un PDF",
+        "q9.opt.oneclick": "Pago en un clic desde el saldo",
+        "q9.opt.ddmatch": "Conciliación automática de domiciliaciones",
+        "q9.opt.cashflow": "Previsión de tesorería",
+        "q9.opt.mode": "Pagos manuales / automáticos",
+        "q9.opt.export": "Exportar a contabilidad",
+        "q10.high_label": "10. ¿Qué parte te parece más útil y por qué?",
+        "q10.low_label": "10. ¿Qué falta, no está claro o no encaja?",
+        "q10.low_hint": "Los detalles concretos ayudan más.",
+        "sD.title": "Precio",
+        "sD.count": "4 preguntas sobre tu sensibilidad al precio",
+        "sD.intro_html": `La idea es una pequeña comisión por <strong class="text-slate-900">transacción</strong> — una factura procesada o un pago emitido, lo que ocurra primero (una factura conciliada con su pago cuenta como una).`,
+        "sD.monthly_hint": "Contesta primero la pregunta 4 y cada precio te mostrará cuánto supone al mes.",
+        "q11.label_html": `11. Precio que te parece <span class="text-blue-700">demasiado barato</span>`,
+        "q11.hint": "Tan barato que dudarías de que funcione",
+        "q12.label_html": `12. Precio que te parece <span class="text-blue-700">barato</span>`,
+        "q12.hint": "Una clara ganga",
+        "q13.label_html": `13. Precio que te parece <span class="text-blue-700">caro</span>`,
+        "q13.hint": "Te lo pensarías pero podrías pagarlo",
+        "q14.label_html": `14. Precio que te parece <span class="text-blue-700">demasiado caro</span>`,
+        "q14.hint": "Ni te lo plantearías",
+        "sD.warning_html": `<strong>Atención:</strong> tus precios deberían ir en aumento desde "demasiado barato" a "demasiado caro". Revisa el orden.`,
+        "sE.title": "Una última cosa",
+        "sE.count": "Y ya está",
+        "q15.label": "15. ¿Algo más que deba saber?",
+        "q16.label": "16. ¿Prefieres una conversación?",
+        "q16.body": "Si alguna respuesta merece más espacio, podemos hablarlo. 30 minutos, el horario que te venga bien.",
+        "q16.book": "Reserva 30 min conmigo",
+        "submit.btn": "Enviar mis respuestas",
+        "submit.hint": "2 minutos. Van directas a Giulio.",
+        "ty.title": "Gracias.",
+        "ty.body": "He recibido tus respuestas. Voy a leerlas todas.",
+        "ty.share": "Compartiré lo que escuche de otros hoteleros en unas tres semanas.",
+        "ty.card_title": "Si quieres hablarlo",
+        "ty.card_body": "Una conversación suele ser más útil que una encuesta. Si alguna de tus respuestas merece más espacio, reserva 30 minutos conmigo.",
+        "ty.card_book": "Reserva 30 min conmigo",
+        "ty.signoff": "— Giulio",
+        "ft.lab": "Lab",
+        "ft.prototype": "· prototipo",
+        "ft.builtby_html": `Creado y publicado por Giulio · <a href="mailto:giulio@amenitiz.com" class="font-medium text-blue-700 hover:underline">giulio@amenitiz.com</a>`,
+        "js.monthly_preview_html": `≈ <strong class="text-slate-900">€{amount}</strong> / mes con ~{count} facturas (tu volumen: {volume})`
+      },
+      it: {
+        "meta.title": "AmenitizSpend — Fatture e pagamenti dei fornitori, in un unico posto",
+        "meta.description": "Un video di 5 minuti su AmenitizSpend e un breve sondaggio per orientare quello che costruiamo dopo.",
+        "hdr.lab": "Lab",
+        "hdr.take_survey": "Rispondi al sondaggio",
+        "hdr.book_call": "Prenota 30 min con me",
+        "hdr.lang_label": "Lingua",
+        "hero.pill": "Prototipo di ricerca",
+        "hero.subtitle": "Fatture e pagamenti dei fornitori, in un unico posto.",
+        "hero.point1": "Tutte le fatture e le ricevute dei fornitori in un unico posto.",
+        "hero.point2": "Paga i fornitori con un clic — direttamente dal tuo saldo AmenitizPay o, se preferisci lasciare i soldi in banca, tramite Open Banking.",
+        "hero.point3": "Fatture e pagamenti riconciliati in automatico, pronti da esportare nel tuo software di contabilità.",
+        "hero.watch": "Guarda il video di 5 min",
+        "hero.book": "Prenota 30 min con me",
+        "hero.survey_instead": "Rispondi al sondaggio",
+        "video.title": "Video di 5 minuti",
+        "video.subtitle": "Come funziona davvero AmenitizSpend.",
+        "pm.role": "Product Manager · Amenitiz",
+        "pm.body": "Prima di investire altro nel costruirlo, voglio capire se sta davvero risolvendo un problema per te. Una call di 30 minuti mi aiuterebbe di più — vorrei sentire come gestisci oggi i pagamenti ai fornitori. Se hai poco tempo, va bene anche il sondaggio qui sotto.",
+        "pm.reciprocal": "In ogni caso, tra circa tre settimane ti condividerò un riassunto di quello che sento dagli altri albergatori.",
+        "pm.book": "Prenota 30 min con me",
+        "pm.survey_instead": "Rispondi al sondaggio",
+        "srv.title": "Qualche domanda, se preferisci scrivere che parlare",
+        "srv.subtitle_html": `16 domande brevi. Circa 2 minuti. Oppure <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="text-blue-700 hover:underline font-medium">prenota 30 minuti con me</a>.`,
+        "sA.title": "Su di te",
+        "sA.count": "2 domande",
+        "q1.label": "1. Nome dell'hotel e numero di camere",
+        "q1.ph": "es. Hotel Santorini · 18 camere",
+        "q2.label": "2. Il tuo ruolo",
+        "q2.ph": "es. Titolare, GM, Receptionist",
+        "sB.title": "Come paghi i fornitori oggi",
+        "sB.count": "5 domande",
+        "q3.label_html": `3. Come ti arrivano oggi la maggior parte delle fatture dei fornitori? <span class="text-slate-400 font-normal">(scegli tutte quelle che valgono)</span>`,
+        "q3.opt.email": "Email — PDF allegato",
+        "q3.opt.paper": "Cartaceo · posta o consegnato a mano",
+        "q3.opt.person": "Di persona · corriere / fornitore",
+        "q3.opt.portal": "Portale del fornitore",
+        "q3.opt.other": "Altro",
+        "q4.label": "4. Più o meno, quante fatture fornitori gestisci al mese?",
+        "q5.label": "5. Quando la liquidità è tirata, come decidi cosa pagare per primo?",
+        "q5.hint": "La versione onesta. Non c'è una risposta giusta.",
+        "q6.label_html": `6. Scegli la parte <em class="not-italic underline decoration-blue-400 decoration-2 underline-offset-2">più fastidiosa</em> del pagare le fatture ai fornitori`,
+        "q6.opt.tracking": "Tenere traccia di cosa scade e quando",
+        "q6.opt.bank": "Pagare una per una dalla banca",
+        "q6.opt.reconciling": "Abbinare gli addebiti diretti alle fatture",
+        "q6.opt.accounting": "Preparare i dati per il commercialista",
+        "q6.opt.other": "Qualcos'altro",
+        "q7.label": "7. Quanto è un problema il tuo processo attuale?",
+        "q7.low": "1 — non tanto",
+        "q7.high": "5 — un vero problema",
+        "sC.title": "La tua reazione ad AmenitizSpend",
+        "sC.count": "3 domande",
+        "q8.label": "8. Dopo aver visto il video, quanto ti sembra utile per il tuo hotel?",
+        "q8.low": "1 — non utile",
+        "q8.high": "5 — molto utile",
+        "q9.label_html": `9. Quali parti ti sono sembrate più utili? <span class="text-slate-400 font-normal">(scegli quelle che vuoi)</span>`,
+        "q9.opt.import": "Importazione fatture — trascina un PDF",
+        "q9.opt.oneclick": "Pagamento in un clic dal saldo",
+        "q9.opt.ddmatch": "Abbinamento automatico degli addebiti",
+        "q9.opt.cashflow": "Previsione di cassa",
+        "q9.opt.mode": "Pagamenti manuali / automatici",
+        "q9.opt.export": "Esportazione in contabilità",
+        "q10.high_label": "10. Quale parte ti sembra più utile e perché?",
+        "q10.low_label": "10. Cosa manca, non è chiaro o non torna?",
+        "q10.low_hint": "I dettagli concreti aiutano di più.",
+        "sD.title": "Prezzo",
+        "sD.count": "4 domande sulla tua sensibilità al prezzo",
+        "sD.intro_html": `L'idea è una piccola commissione a <strong class="text-slate-900">transazione</strong> — una fattura elaborata o un pagamento emesso, in base a quale arriva prima (una fattura abbinata a un pagamento conta come una).`,
+        "sD.monthly_hint": "Rispondi prima alla domanda 4 e ogni prezzo mostrerà quanto significa al mese.",
+        "q11.label_html": `11. Prezzo che ti sembra <span class="text-blue-700">troppo basso</span>`,
+        "q11.hint": "Così basso da farti dubitare che funzioni",
+        "q12.label_html": `12. Prezzo che ti sembra <span class="text-blue-700">basso</span>`,
+        "q12.hint": "Un chiaro affare",
+        "q13.label_html": `13. Prezzo che ti sembra <span class="text-blue-700">alto</span>`,
+        "q13.hint": "Ci penseresti due volte ma potresti pagarlo",
+        "q14.label_html": `14. Prezzo che ti sembra <span class="text-blue-700">troppo alto</span>`,
+        "q14.hint": "Non lo prenderesti in considerazione",
+        "sD.warning_html": `<strong>Attenzione:</strong> i prezzi dovrebbero crescere da "troppo basso" a "troppo alto". Controlla l'ordine.`,
+        "sE.title": "Un'ultima cosa",
+        "sE.count": "E hai finito",
+        "q15.label": "15. C'è altro che dovrei sapere?",
+        "q16.label": "16. Preferisci una chiacchierata?",
+        "q16.body": "Se qualcuna delle tue risposte merita più spazio, possiamo parlarne. 30 minuti, il tuo slot.",
+        "q16.book": "Prenota 30 min con me",
+        "submit.btn": "Invia le mie risposte",
+        "submit.hint": "2 minuti. Vanno dritte a Giulio.",
+        "ty.title": "Grazie.",
+        "ty.body": "Le tue risposte sono arrivate. Le leggerò tutte.",
+        "ty.share": "Tra circa tre settimane ti condividerò un riassunto di quello che ho sentito dagli altri albergatori.",
+        "ty.card_title": "Se vuoi parlarne",
+        "ty.card_body": "Una chiacchierata spesso è più utile di un sondaggio. Se qualcuna delle tue risposte merita più spazio, prenota 30 minuti con me.",
+        "ty.card_book": "Prenota 30 min con me",
+        "ty.signoff": "— Giulio",
+        "ft.lab": "Lab",
+        "ft.prototype": "· prototipo",
+        "ft.builtby_html": `Costruito e pubblicato da Giulio · <a href="mailto:giulio@amenitiz.com" class="font-medium text-blue-700 hover:underline">giulio@amenitiz.com</a>`,
+        "js.monthly_preview_html": `≈ <strong class="text-slate-900">€{amount}</strong> / mese con ~{count} fatture (il tuo volume: {volume})`
+      },
+      fr: {
+        "meta.title": "AmenitizSpend — Factures et paiements fournisseurs, au même endroit",
+        "meta.description": "Une vidéo de 5 minutes d'AmenitizSpend et un sondage court pour orienter la suite du produit.",
+        "hdr.lab": "Lab",
+        "hdr.take_survey": "Répondre au sondage",
+        "hdr.book_call": "Réservez 30 min avec moi",
+        "hdr.lang_label": "Langue",
+        "hero.pill": "Prototype en recherche",
+        "hero.subtitle": "Factures et paiements fournisseurs, au même endroit.",
+        "hero.point1": "Toutes vos factures et reçus fournisseurs au même endroit.",
+        "hero.point2": "Payez vos fournisseurs en un clic — directement depuis votre solde AmenitizPay ou, si vous préférez garder l'argent à la banque, via l'Open Banking.",
+        "hero.point3": "Factures et paiements rapprochés automatiquement, prêts à exporter vers votre logiciel de comptabilité.",
+        "hero.watch": "Voir la vidéo de 5 min",
+        "hero.book": "Réservez 30 min avec moi",
+        "hero.survey_instead": "Répondre au sondage",
+        "video.title": "Vidéo de 5 minutes",
+        "video.subtitle": "Comment AmenitizSpend fonctionne concrètement.",
+        "pm.role": "Product Manager · Amenitiz",
+        "pm.body": "Avant d'investir davantage dans son développement, je veux savoir si cela résout vraiment un problème pour vous. Un appel de 30 minutes m'aiderait le plus — j'aimerais entendre comment vous gérez les paiements fournisseurs aujourd'hui. Si vous manquez de temps, le sondage ci-dessous fonctionne aussi.",
+        "pm.reciprocal": "Quelle que soit votre option, je vous partagerai dans environ trois semaines un résumé de ce que j'entends des autres hôteliers.",
+        "pm.book": "Réservez 30 min avec moi",
+        "pm.survey_instead": "Répondre au sondage",
+        "srv.title": "Quelques questions, si vous préférez écrire plutôt que parler",
+        "srv.subtitle_html": `16 questions courtes. Environ 2 minutes. Ou <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="text-blue-700 hover:underline font-medium">réservez 30 minutes avec moi</a>.`,
+        "sA.title": "À propos de vous",
+        "sA.count": "2 questions",
+        "q1.label": "1. Nom de l'hôtel et nombre de chambres",
+        "q1.ph": "ex. Hôtel Santorini · 18 chambres",
+        "q2.label": "2. Votre poste",
+        "q2.ph": "ex. Propriétaire, Directeur, Réceptionniste",
+        "sB.title": "Comment vous payez vos fournisseurs aujourd'hui",
+        "sB.count": "5 questions",
+        "q3.label_html": `3. Comment la plupart de vos factures fournisseurs arrivent-elles aujourd'hui ? <span class="text-slate-400 font-normal">(cochez tout ce qui s'applique)</span>`,
+        "q3.opt.email": "E-mail — PDF en pièce jointe",
+        "q3.opt.paper": "Papier · courrier ou remis en main propre",
+        "q3.opt.person": "En personne · livreur / fournisseur",
+        "q3.opt.portal": "Portail du fournisseur",
+        "q3.opt.other": "Autre",
+        "q4.label": "4. Combien de factures fournisseurs traitez-vous en moyenne par mois ?",
+        "q5.label": "5. Quand la trésorerie est serrée, comment décidez-vous ce que vous payez en premier ?",
+        "q5.hint": "La version honnête. Il n'y a pas de bonne réponse.",
+        "q6.label_html": `6. Choisissez la partie <em class="not-italic underline decoration-blue-400 decoration-2 underline-offset-2">la plus pénible</em> du paiement des factures fournisseurs`,
+        "q6.opt.tracking": "Suivre ce qui est dû et quand",
+        "q6.opt.bank": "Payer une par une depuis la banque",
+        "q6.opt.reconciling": "Rapprocher les prélèvements aux factures",
+        "q6.opt.accounting": "Préparer les données pour le comptable",
+        "q6.opt.other": "Autre chose",
+        "q7.label": "7. À quel point votre processus actuel est-il un problème ?",
+        "q7.low": "1 — pas vraiment",
+        "q7.high": "5 — un vrai problème",
+        "sC.title": "Votre réaction à AmenitizSpend",
+        "sC.count": "3 questions",
+        "q8.label": "8. Après avoir vu la vidéo, à quel point cela vous semble utile pour votre hôtel ?",
+        "q8.low": "1 — pas utile",
+        "q8.high": "5 — très utile",
+        "q9.label_html": `9. Quelles parties vous ont paru les plus utiles ? <span class="text-slate-400 font-normal">(cochez ce que vous voulez)</span>`,
+        "q9.opt.import": "Import de factures — glisser un PDF",
+        "q9.opt.oneclick": "Paiement en un clic depuis le solde",
+        "q9.opt.ddmatch": "Rapprochement automatique des prélèvements",
+        "q9.opt.cashflow": "Prévision de trésorerie",
+        "q9.opt.mode": "Paiements manuels / automatiques",
+        "q9.opt.export": "Export vers la comptabilité",
+        "q10.high_label": "10. Quelle partie vous semble la plus utile, et pourquoi ?",
+        "q10.low_label": "10. Qu'est-ce qui manque, n'est pas clair ou ne va pas ?",
+        "q10.low_hint": "Les détails aident le plus.",
+        "sD.title": "Tarif",
+        "sD.count": "4 questions sur votre sensibilité au prix",
+        "sD.intro_html": `L'idée est une petite commission par <strong class="text-slate-900">transaction</strong> — une facture traitée ou un paiement émis, selon ce qui arrive en premier (une facture rapprochée à son paiement compte pour une).`,
+        "sD.monthly_hint": "Répondez d'abord à la question 4 et chaque prix affichera ce que cela représente par mois.",
+        "q11.label_html": `11. Prix qui vous semble <span class="text-blue-700">trop peu cher</span>`,
+        "q11.hint": "Si peu cher que vous douteriez que ça marche",
+        "q12.label_html": `12. Prix qui vous semble <span class="text-blue-700">peu cher</span>`,
+        "q12.hint": "Une vraie bonne affaire",
+        "q13.label_html": `13. Prix qui vous semble <span class="text-blue-700">cher</span>`,
+        "q13.hint": "Vous hésiteriez mais pourriez encore payer",
+        "q14.label_html": `14. Prix qui vous semble <span class="text-blue-700">trop cher</span>`,
+        "q14.hint": "Vous n'envisageriez même pas",
+        "sD.warning_html": `<strong>Attention :</strong> vos prix devraient augmenter de « trop peu cher » à « trop cher ». Vérifiez l'ordre.`,
+        "sE.title": "Une dernière chose",
+        "sE.count": "Et vous avez fini",
+        "q15.label": "15. Y a-t-il autre chose à savoir ?",
+        "q16.label": "16. Vous préférez une conversation ?",
+        "q16.body": "Si l'une de vos réponses mérite plus de place, on peut en parler. 30 minutes, à votre créneau.",
+        "q16.book": "Réservez 30 min avec moi",
+        "submit.btn": "Envoyer mes réponses",
+        "submit.hint": "2 minutes. Directement à Giulio.",
+        "ty.title": "Merci.",
+        "ty.body": "Vos réponses sont bien reçues. Je vais toutes les lire.",
+        "ty.share": "Je partagerai dans environ trois semaines un résumé de ce que j'ai entendu des autres hôteliers.",
+        "ty.card_title": "Si vous voulez en parler",
+        "ty.card_body": "Une conversation est souvent plus utile qu'un sondage. Si l'une de vos réponses mérite plus de place, réservez 30 minutes avec moi.",
+        "ty.card_book": "Réservez 30 min avec moi",
+        "ty.signoff": "— Giulio",
+        "ft.lab": "Lab",
+        "ft.prototype": "· prototype",
+        "ft.builtby_html": `Conçu et publié par Giulio · <a href="mailto:giulio@amenitiz.com" class="font-medium text-blue-700 hover:underline">giulio@amenitiz.com</a>`,
+        "js.monthly_preview_html": `≈ <strong class="text-slate-900">{amount} €</strong> / mois pour ~{count} factures (votre volume : {volume})`
+      },
+      pt: {
+        "meta.title": "AmenitizSpend — Faturas e pagamentos de fornecedores, num só lugar",
+        "meta.description": "Um vídeo de 5 minutos do AmenitizSpend e um questionário curto para orientar o que construímos a seguir.",
+        "hdr.lab": "Lab",
+        "hdr.take_survey": "Responder ao questionário",
+        "hdr.book_call": "Marque 30 min comigo",
+        "hdr.lang_label": "Idioma",
+        "hero.pill": "Protótipo de pesquisa",
+        "hero.subtitle": "Faturas e pagamentos de fornecedores, num só lugar.",
+        "hero.point1": "Todas as suas faturas e recibos de fornecedores num só lugar.",
+        "hero.point2": "Pague fornecedores num clique — direto do seu saldo AmenitizPay ou, se preferir manter o dinheiro no banco, via Open Banking.",
+        "hero.point3": "Faturas e pagamentos conciliados automaticamente, prontos para exportar para o seu software de contabilidade.",
+        "hero.watch": "Ver o vídeo de 5 min",
+        "hero.book": "Marque 30 min comigo",
+        "hero.survey_instead": "Responder ao questionário",
+        "video.title": "Vídeo de 5 minutos",
+        "video.subtitle": "Como o AmenitizSpend funciona na prática.",
+        "pm.role": "Product Manager · Amenitiz",
+        "pm.body": "Antes de investirmos mais em construir isto, quero saber se está a resolver um problema real para você. Uma chamada de 30 minutos ajudaria mais — gostaria de ouvir como gere hoje os pagamentos a fornecedores. Se tiver pouco tempo, o questionário abaixo também serve.",
+        "pm.reciprocal": "Escolha o que escolher, dentro de cerca de três semanas partilharei um resumo do que ouvi de outros hoteleiros.",
+        "pm.book": "Marque 30 min comigo",
+        "pm.survey_instead": "Responder ao questionário",
+        "srv.title": "Umas perguntas, se preferir escrever a conversar",
+        "srv.subtitle_html": `16 perguntas curtas. Cerca de 2 minutos. Ou <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="text-blue-700 hover:underline font-medium">marque 30 minutos comigo</a>.`,
+        "sA.title": "Sobre você",
+        "sA.count": "2 perguntas",
+        "q1.label": "1. Nome do hotel e número de quartos",
+        "q1.ph": "ex. Hotel Santorini · 18 quartos",
+        "q2.label": "2. A sua função",
+        "q2.ph": "ex. Proprietário, Diretor, Rececionista",
+        "sB.title": "Como paga os fornecedores hoje",
+        "sB.count": "5 perguntas",
+        "q3.label_html": `3. Como chegam hoje a maioria das faturas dos fornecedores? <span class="text-slate-400 font-normal">(escolha todas as que se apliquem)</span>`,
+        "q3.opt.email": "E-mail — PDF em anexo",
+        "q3.opt.paper": "Papel · correio ou entregue em mão",
+        "q3.opt.person": "Em pessoa · motorista / fornecedor",
+        "q3.opt.portal": "Portal do fornecedor",
+        "q3.opt.other": "Outro",
+        "q4.label": "4. Quantas faturas de fornecedores gere, mais ou menos, por mês?",
+        "q5.label": "5. Quando o dinheiro está apertado, como decide o que pagar primeiro?",
+        "q5.hint": "A versão honesta. Não há resposta certa.",
+        "q6.label_html": `6. Escolha a parte <em class="not-italic underline decoration-blue-400 decoration-2 underline-offset-2">mais chata</em> de pagar faturas de fornecedores`,
+        "q6.opt.tracking": "Controlar o que está por pagar e quando",
+        "q6.opt.bank": "Pagar uma a uma pelo banco",
+        "q6.opt.reconciling": "Reconciliar débitos diretos com faturas",
+        "q6.opt.accounting": "Preparar dados para o contabilista",
+        "q6.opt.other": "Outra coisa",
+        "q7.label": "7. Quão problemático é o seu processo atual?",
+        "q7.low": "1 — nem por isso",
+        "q7.high": "5 — um problema real",
+        "sC.title": "A sua reação ao AmenitizSpend",
+        "sC.count": "3 perguntas",
+        "q8.label": "8. Depois de ver o vídeo, quão útil parece isto para o seu hotel?",
+        "q8.low": "1 — nada útil",
+        "q8.high": "5 — muito útil",
+        "q9.label_html": `9. Que partes lhe pareceram mais úteis? <span class="text-slate-400 font-normal">(escolha as que quiser)</span>`,
+        "q9.opt.import": "Importar faturas — arrastar um PDF",
+        "q9.opt.oneclick": "Pagamento num clique a partir do saldo",
+        "q9.opt.ddmatch": "Reconciliação automática de débitos diretos",
+        "q9.opt.cashflow": "Previsão de tesouraria",
+        "q9.opt.mode": "Pagamentos manuais / automáticos",
+        "q9.opt.export": "Exportar para contabilidade",
+        "q10.high_label": "10. Que parte parece mais útil e porquê?",
+        "q10.low_label": "10. O que falta, não está claro ou não bate certo?",
+        "q10.low_hint": "Detalhes concretos ajudam mais.",
+        "sD.title": "Preço",
+        "sD.count": "4 perguntas sobre a sua sensibilidade ao preço",
+        "sD.intro_html": `A ideia é uma pequena comissão por <strong class="text-slate-900">transação</strong> — uma fatura processada ou um pagamento emitido, o que vier primeiro (uma fatura conciliada com o pagamento conta como uma).`,
+        "sD.monthly_hint": "Responda primeiro à pergunta 4 e cada preço mostrará o que representa por mês.",
+        "q11.label_html": `11. Preço que parece <span class="text-blue-700">demasiado barato</span>`,
+        "q11.hint": "Tão barato que duvidaria que funcionasse",
+        "q12.label_html": `12. Preço que parece <span class="text-blue-700">barato</span>`,
+        "q12.hint": "Uma pechincha clara",
+        "q13.label_html": `13. Preço que parece <span class="text-blue-700">caro</span>`,
+        "q13.hint": "Pensaria duas vezes mas ainda pagaria",
+        "q14.label_html": `14. Preço que parece <span class="text-blue-700">demasiado caro</span>`,
+        "q14.hint": "Não consideraria",
+        "sD.warning_html": `<strong>Atenção:</strong> os preços devem subir de "demasiado barato" para "demasiado caro". Verifique a ordem.`,
+        "sE.title": "Uma última coisa",
+        "sE.count": "E terminou",
+        "q15.label": "15. Há mais alguma coisa que eu deva saber?",
+        "q16.label": "16. Prefere uma conversa?",
+        "q16.body": "Se alguma das suas respostas merecer mais espaço, podemos falar. 30 minutos, na hora que lhe der jeito.",
+        "q16.book": "Marque 30 min comigo",
+        "submit.btn": "Enviar as minhas respostas",
+        "submit.hint": "2 minutos. Vão direto para o Giulio.",
+        "ty.title": "Obrigado.",
+        "ty.body": "As suas respostas chegaram. Vou lê-las todas.",
+        "ty.share": "Dentro de cerca de três semanas partilharei um resumo do que ouvi de outros hoteleiros.",
+        "ty.card_title": "Se quiser falar sobre o assunto",
+        "ty.card_body": "Uma conversa costuma ser mais útil do que um questionário. Se alguma das suas respostas merecer mais espaço, marque 30 minutos comigo.",
+        "ty.card_book": "Marque 30 min comigo",
+        "ty.signoff": "— Giulio",
+        "ft.lab": "Lab",
+        "ft.prototype": "· protótipo",
+        "ft.builtby_html": `Construído e publicado pelo Giulio · <a href="mailto:giulio@amenitiz.com" class="font-medium text-blue-700 hover:underline">giulio@amenitiz.com</a>`,
+        "js.monthly_preview_html": `≈ <strong class="text-slate-900">€{amount}</strong> / mês para ~{count} faturas (o seu volume: {volume})`
+      }
+    };
+
+    var SUPPORTED_LANGS = ["en", "es", "it", "fr", "pt"];
+    var currentLang = "en";
+
+    function detectLang() {
+      try {
+        var saved = localStorage.getItem("amenitizspend_lang");
+        if (saved && SUPPORTED_LANGS.indexOf(saved) !== -1) return saved;
+      } catch (e) {}
+      var browser = (navigator.language || "en").slice(0, 2).toLowerCase();
+      return SUPPORTED_LANGS.indexOf(browser) !== -1 ? browser : "en";
+    }
+
+    function applyTranslations(lang) {
+      if (SUPPORTED_LANGS.indexOf(lang) === -1) lang = "en";
+      currentLang = lang;
+      var dict = T[lang];
+      document.documentElement.lang = lang;
+
+      if (dict["meta.title"]) document.title = dict["meta.title"];
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && dict["meta.description"]) metaDesc.setAttribute("content", dict["meta.description"]);
+
+      var langInput = document.querySelector('input[name="language"]');
+      if (langInput) langInput.value = lang;
+
+      document.querySelectorAll("[data-i18n]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n");
+        if (dict[key] != null) el.textContent = dict[key];
+      });
+      document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-html");
+        if (dict[key] != null) el.innerHTML = dict[key];
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key] != null) el.setAttribute("placeholder", dict[key]);
+      });
+      document.querySelectorAll("[data-i18n-aria-label]").forEach(function (el) {
+        var key = el.getAttribute("data-i18n-aria-label");
+        if (dict[key] != null) el.setAttribute("aria-label", dict[key]);
+      });
+
+      if (window.__updateMonthlyPreview) window.__updateMonthlyPreview();
+    }
+
+    function setLang(lang) {
+      try { localStorage.setItem("amenitizspend_lang", lang); } catch (e) {}
+      applyTranslations(lang);
+    }
+
+    var initialLang = detectLang();
+
+    document.addEventListener("DOMContentLoaded", function () {
+      applyTranslations(initialLang);
+      var sel = document.getElementById("langSelect");
+      if (sel) {
+        sel.value = initialLang;
+        sel.addEventListener("change", function () { setLang(sel.value); });
+      }
+    });
+
     // Thank-you state after Netlify redirects with ?submitted=1
     (function () {
       var params = new URLSearchParams(window.location.search);
@@ -632,25 +1205,23 @@
     });
 
     // Save partial survey to Netlify before any Calendly click
-    // (so we don't lose their answers when they leave to book a call)
     (function () {
       var form = document.querySelector('form[name="amenitizspend-survey"]');
       if (!form) return;
-      if (window.location.search.indexOf("submitted=1") !== -1) return; // already submitted
+      if (window.location.search.indexOf("submitted=1") !== -1) return;
 
       function formHasData() {
         var data = new FormData(form);
         var found = false;
         data.forEach(function (value, key) {
           if (found) return;
-          if (key === "form-name" || key === "bot-field" || key === "partial_via_calendly") return;
+          if (key === "form-name" || key === "bot-field" || key === "partial_via_calendly" || key === "language") return;
           if ((value || "").toString().trim() !== "") found = true;
         });
         return found;
       }
 
       function submitPartial() {
-        // Tag this submission as partial so it's easy to distinguish in the Netlify dashboard
         var tag = form.querySelector('input[name="partial_via_calendly"]');
         if (!tag) {
           tag = document.createElement("input");
@@ -673,14 +1244,12 @@
 
       document.querySelectorAll('a[href*="calendly.com/giulio-amenitiz"]').forEach(function (link) {
         link.addEventListener("click", function (e) {
-          if (!formHasData()) return; // nothing to save, normal navigation
+          if (!formHasData()) return;
 
           e.preventDefault();
           var url = link.href;
           var openInNewTab = link.target === "_blank";
 
-          // Open the destination tab synchronously inside the user gesture
-          // to avoid popup blockers, then redirect it once the save completes.
           var holder = openInNewTab ? window.open("about:blank", "_blank") : null;
 
           function go() {
@@ -707,14 +1276,9 @@
       ids.forEach(function (id) { document.getElementById(id).addEventListener("blur", check); });
     })();
 
-    // Monthly preview: price × volume midpoint, live update
+    // Monthly preview: price × volume midpoint, live update — locale-aware
     (function () {
-      var VOLUME_MIDPOINT = {
-        "1-5": 3,
-        "6-15": 10,
-        "16-30": 23,
-        "30+": 40
-      };
+      var VOLUME_MIDPOINT = { "1-5": 3, "6-15": 10, "16-30": 23, "30+": 40 };
       var ids = ["price_too_cheap", "price_cheap", "price_expensive", "price_too_expensive"];
       var hint = document.getElementById("monthlyHint");
 
@@ -724,19 +1288,23 @@
       }
 
       function fmt(n) {
-        return n.toLocaleString("en", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        try {
+          return n.toLocaleString(currentLang, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        } catch (e) {
+          return n.toFixed(2);
+        }
       }
 
       function update() {
         var vol = getVolume();
-        // Toggle the "answer Q4 first" hint
         if (!vol) {
-          // Show hint only if any price field has a value
           var anyPrice = ids.some(function (id) { return document.getElementById(id).value.trim() !== ""; });
           hint.classList.toggle("hidden", !anyPrice);
         } else {
           hint.classList.add("hidden");
         }
+
+        var template = (T[currentLang] && T[currentLang]["js.monthly_preview_html"]) || T.en["js.monthly_preview_html"];
 
         ids.forEach(function (id) {
           var input = document.getElementById(id);
@@ -749,9 +1317,14 @@
           }
           var monthly = price * vol.count;
           preview.classList.remove("hidden");
-          preview.innerHTML = "≈ <strong class=\"text-slate-900\">€" + fmt(monthly) + "</strong> / month at ~" + vol.count + " invoices (your volume: " + vol.label + ")";
+          preview.innerHTML = template
+            .replace("{amount}", fmt(monthly))
+            .replace("{count}", vol.count)
+            .replace("{volume}", vol.label);
         });
       }
+
+      window.__updateMonthlyPreview = update;
 
       document.querySelectorAll('input[name="invoice_volume"]').forEach(function (r) {
         r.addEventListener("change", update);
