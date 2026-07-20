@@ -1126,12 +1126,23 @@
     var currentLang = "en";
 
     function detectLang() {
+      // 1. URL param wins — this is how we send a direct link in a specific language
+      var urlLang = new URLSearchParams(window.location.search).get("lang");
+      if (urlLang && SUPPORTED_LANGS.indexOf(urlLang) !== -1) return urlLang;
+      // 2. Persisted choice from a prior visit
       try {
         var saved = localStorage.getItem("amenitizspend_lang");
         if (saved && SUPPORTED_LANGS.indexOf(saved) !== -1) return saved;
       } catch (e) {}
+      // 3. Browser locale
       var browser = (navigator.language || "en").slice(0, 2).toLowerCase();
       return SUPPORTED_LANGS.indexOf(browser) !== -1 ? browser : "en";
+    }
+
+    function updateUrlLang(lang) {
+      var url = new URL(window.location.href);
+      url.searchParams.set("lang", lang);
+      window.history.replaceState(null, "", url.toString());
     }
 
     function applyTranslations(lang) {
@@ -1146,6 +1157,10 @@
 
       var langInput = document.querySelector('input[name="language"]');
       if (langInput) langInput.value = lang;
+
+      // Preserve lang across the Netlify post-submit redirect
+      var form = document.querySelector('form[name="amenitizspend-survey"]');
+      if (form) form.setAttribute("action", "?submitted=1&lang=" + lang);
 
       document.querySelectorAll("[data-i18n]").forEach(function (el) {
         var key = el.getAttribute("data-i18n");
@@ -1169,6 +1184,7 @@
 
     function setLang(lang) {
       try { localStorage.setItem("amenitizspend_lang", lang); } catch (e) {}
+      updateUrlLang(lang);
       applyTranslations(lang);
     }
 
@@ -1176,6 +1192,8 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       applyTranslations(initialLang);
+      updateUrlLang(initialLang);
+      try { localStorage.setItem("amenitizspend_lang", initialLang); } catch (e) {}
       var sel = document.getElementById("langSelect");
       if (sel) {
         sel.value = initialLang;
