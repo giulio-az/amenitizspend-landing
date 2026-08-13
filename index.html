@@ -1287,12 +1287,16 @@
       if (!form) return;
       if (window.location.search.indexOf("submitted=1") !== -1) return;
 
+      var HIDDEN_FIELDS = [
+        "form-name", "botcheck", "bot-field", "partial_via_calendly", "language",
+        "access_key", "subject", "from_name", "redirect"
+      ];
       function formHasData() {
         var data = new FormData(form);
         var found = false;
         data.forEach(function (value, key) {
           if (found) return;
-          if (key === "form-name" || key === "bot-field" || key === "partial_via_calendly" || key === "language") return;
+          if (HIDDEN_FIELDS.indexOf(key) !== -1) return;
           if ((value || "").toString().trim() !== "") found = true;
         });
         return found;
