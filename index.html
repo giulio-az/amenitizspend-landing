@@ -947,7 +947,7 @@
         "pm.book": "Réservez 30 min avec moi",
         "pm.survey_instead": "Répondre au sondage",
         "srv.title": "Quelques questions, si vous préférez écrire plutôt que parler",
-        "srv.subtitle_html": `16 questions courtes. Environ 2 minutes. Ou <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="text-blue-700 hover:underline font-medium">réservez 30 minutes avec moi</a>.`,
+        "srv.subtitle_html": `16 questions courtes. Environ 2 minutes. Ou <a href="https://meetings.hubspot.com/alexis-fillat/afillat-product" target="_blank" rel="noopener" class="text-blue-700 hover:underline font-medium">réservez 30 minutes avec moi</a>.`,
         "sA.title": "À propos de vous",
         "sA.count": "2 questions",
         "q1.label": "1. Nom de l'hôtel et nombre de chambres",
@@ -1197,6 +1197,13 @@
       var pmNameEl = document.getElementById("pmName");
       if (pmNameEl) pmNameEl.textContent = personFullName;
 
+      var bookingUrl = isFr
+        ? "https://meetings.hubspot.com/alexis-fillat/afillat-product"
+        : "https://calendly.com/giulio-amenitiz/30min";
+      document.querySelectorAll('a[href*="calendly.com/giulio-amenitiz"], a[href*="meetings.hubspot.com/alexis-fillat"]').forEach(function (a) {
+        if (a.href !== bookingUrl) a.href = bookingUrl;
+      });
+
       if (window.__updateMonthlyPreview) window.__updateMonthlyPreview();
     }
 
@@ -1278,7 +1285,7 @@
         });
       }
 
-      document.querySelectorAll('a[href*="calendly.com/giulio-amenitiz"]').forEach(function (link) {
+      document.querySelectorAll('a[href*="calendly.com/giulio-amenitiz"], a[href*="meetings.hubspot.com/alexis-fillat"]').forEach(function (link) {
         link.addEventListener("click", function (e) {
           if (!formHasData()) return;
 
