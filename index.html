@@ -347,11 +347,15 @@
           <p class="text-base text-slate-600" data-i18n-html="srv.subtitle_html">16 short questions. About 2 minutes. Or <a href="https://calendly.com/giulio-amenitiz/30min" target="_blank" rel="noopener" class="text-blue-700 hover:underline font-medium">book 30 minutes with me</a> instead.</p>
         </div>
 
-        <form name="amenitizspend-survey" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="?submitted=1" class="space-y-10 reveal">
+        <form name="amenitizspend-survey" method="POST" action="https://api.web3forms.com/submit" class="space-y-10 reveal">
+          <input type="hidden" name="access_key" value="cb775369-4d75-4a53-8ee5-4a740ae09634">
+          <input type="hidden" name="subject" value="AmenitizSpend survey response">
+          <input type="hidden" name="from_name" value="AmenitizSpend landing">
+          <input type="hidden" name="redirect" value="https://giulio-az.github.io/amenitizspend-landing/?submitted=1">
           <input type="hidden" name="form-name" value="amenitizspend-survey">
           <input type="hidden" name="language" value="en">
           <p class="hidden">
-            <label>Leave this field empty: <input name="bot-field"></label>
+            <label>Leave this field empty: <input name="botcheck" type="checkbox"></label>
           </p>
 
           <!-- ===== Section A ===== -->
@@ -1158,9 +1162,9 @@
       var langInput = document.querySelector('input[name="language"]');
       if (langInput) langInput.value = lang;
 
-      // Preserve lang across the Netlify post-submit redirect
-      var form = document.querySelector('form[name="amenitizspend-survey"]');
-      if (form) form.setAttribute("action", "?submitted=1&lang=" + lang);
+      // Preserve lang across the Web3Forms post-submit redirect
+      var redirectInput = document.querySelector('input[name="redirect"]');
+      if (redirectInput) redirectInput.value = "https://giulio-az.github.io/amenitizspend-landing/?submitted=1&lang=" + lang;
 
       document.querySelectorAll("[data-i18n]").forEach(function (el) {
         var key = el.getAttribute("data-i18n");
@@ -1276,9 +1280,13 @@
 
         var data = new FormData(form);
         var params = new URLSearchParams();
-        data.forEach(function (value, key) { params.append(key, value); });
+        data.forEach(function (value, key) {
+          if (key === "redirect") return;
+          params.append(key, value);
+        });
+        params.set("subject", "AmenitizSpend partial survey (pre-booking)");
 
-        return fetch("/", {
+        return fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
           body: params.toString()
