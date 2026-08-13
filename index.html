@@ -294,7 +294,7 @@
           <div class="absolute -inset-8 bg-gradient-to-br from-blue-300/30 via-indigo-300/20 to-purple-300/30 rounded-[3rem] blur-3xl"></div>
           <div class="relative rounded-2xl bg-slate-900 p-2 shadow-2xl shadow-slate-900/30">
             <div class="aspect-video rounded-xl overflow-hidden bg-slate-950">
-              <iframe src="https://www.loom.com/embed/df3b70a899d245649eee02ef0f29ee6c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen class="w-full h-full"></iframe>
+              <iframe id="loomVideo" src="https://www.loom.com/embed/df3b70a899d245649eee02ef0f29ee6c" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen class="w-full h-full"></iframe>
             </div>
           </div>
         </div>
@@ -1178,6 +1178,13 @@
         var key = el.getAttribute("data-i18n-aria-label");
         if (dict[key] != null) el.setAttribute("aria-label", dict[key]);
       });
+
+      var loomIframe = document.getElementById("loomVideo");
+      if (loomIframe) {
+        var loomId = lang === "fr" ? "61129ce69272415ea94a7097d085685e" : "df3b70a899d245649eee02ef0f29ee6c";
+        var desiredSrc = "https://www.loom.com/embed/" + loomId;
+        if (loomIframe.src !== desiredSrc) loomIframe.src = desiredSrc;
+      }
 
       if (window.__updateMonthlyPreview) window.__updateMonthlyPreview();
     }
