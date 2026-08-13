@@ -1251,7 +1251,37 @@
       });
     });
 
-    // Save partial survey to Netlify before any Calendly click
+    // Handle the full survey submit via fetch — Web3Forms's built-in 302 redirect
+    // preserves POST and hits GitHub Pages with a 405, so we submit ourselves and
+    // navigate the browser to the thank-you URL as a plain GET.
+    (function () {
+      var form = document.querySelector('form[name="amenitizspend-survey"]');
+      if (!form) return;
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var submitBtn = form.querySelector('button[type="submit"], input[type="submit"]');
+        if (submitBtn) submitBtn.disabled = true;
+
+        var data = new FormData(form);
+        var redirectUrl = data.get("redirect") ||
+          "https://giulio-az.github.io/amenitizspend-landing/?submitted=1";
+        data.delete("redirect");
+
+        var params = new URLSearchParams();
+        data.forEach(function (value, key) { params.append(key, value); });
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: params.toString()
+        })
+          .then(function () { window.location.href = redirectUrl; })
+          .catch(function () { window.location.href = redirectUrl; });
+      });
+    })();
+
+    // Save partial survey before any booking-link click
     (function () {
       var form = document.querySelector('form[name="amenitizspend-survey"]');
       if (!form) return;
