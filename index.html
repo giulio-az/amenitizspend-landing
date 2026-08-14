@@ -1129,6 +1129,23 @@
     var SUPPORTED_LANGS = ["en", "es", "it", "fr", "pt"];
     var currentLang = "en";
 
+    // Only consulted when lang === "fr". Default AM (no ?am= param) is Alexis.
+    var AM_PROFILES = {
+      alexis: {
+        photo: "alexis.jpg",
+        fullName: "Alexis Fillat",
+        firstName: "Alexis",
+        bookingUrl: "https://meetings.hubspot.com/alexis-fillat/afillat-product"
+      },
+      julia: {
+        photo: "julia.jpg",
+        fullName: "Julia Nguyen",
+        firstName: "Julia",
+        bookingUrl: "https://meetings.hubspot.com/julia-nguyen1?uuid=30f4e187-2b03-4903-a95b-af488a4b180e"
+      }
+    };
+    var DEFAULT_AM = "alexis";
+
     function detectLang() {
       // 1. URL param wins — this is how we send a direct link in a specific language
       var urlLang = new URLSearchParams(window.location.search).get("lang");
@@ -1143,9 +1160,26 @@
       return SUPPORTED_LANGS.indexOf(browser) !== -1 ? browser : "en";
     }
 
+    function detectAm() {
+      var urlAm = new URLSearchParams(window.location.search).get("am");
+      if (urlAm && AM_PROFILES[urlAm]) return urlAm;
+      try {
+        var saved = localStorage.getItem("amenitizspend_am");
+        if (saved && AM_PROFILES[saved]) return saved;
+      } catch (e) {}
+      return DEFAULT_AM;
+    }
+
     function updateUrlLang(lang) {
       var url = new URL(window.location.href);
       url.searchParams.set("lang", lang);
+      window.history.replaceState(null, "", url.toString());
+    }
+
+    function updateUrlAm(am) {
+      var url = new URL(window.location.href);
+      if (am && am !== DEFAULT_AM) url.searchParams.set("am", am);
+      else url.searchParams.delete("am");
       window.history.replaceState(null, "", url.toString());
     }
 
@@ -1191,20 +1225,28 @@
       }
 
       var isFr = lang === "fr";
-      var personPhoto = isFr ? "alexis.jpg" : "giulio.jpg";
-      var personFullName = isFr ? "Alexis Fillat" : "Giulio Caggiano";
-      var personFirstName = isFr ? "Alexis" : "Giulio";
-      document.querySelectorAll('img[src$="giulio.jpg"], img[src$="alexis.jpg"]').forEach(function (img) {
+      var amKey = isFr ? detectAm() : null;
+      var profile = amKey ? AM_PROFILES[amKey] : null;
+      var personPhoto = profile ? profile.photo : "giulio.jpg";
+      var personFullName = profile ? profile.fullName : "Giulio Caggiano";
+      var personFirstName = profile ? profile.firstName : "Giulio";
+      var amPhotoSelectors = Object.keys(AM_PROFILES).map(function (k) {
+        return 'img[src$="' + AM_PROFILES[k].photo + '"]';
+      }).concat(['img[src$="giulio.jpg"]']).join(", ");
+      document.querySelectorAll(amPhotoSelectors).forEach(function (img) {
         if (!img.src.endsWith(personPhoto)) img.src = personPhoto;
         img.alt = img.alt.indexOf(" ") !== -1 ? personFullName : personFirstName;
       });
       var pmNameEl = document.getElementById("pmName");
       if (pmNameEl) pmNameEl.textContent = personFullName;
 
-      var bookingUrl = isFr
-        ? "https://meetings.hubspot.com/alexis-fillat/afillat-product"
-        : "https://calendly.com/giulio-amenitiz/30min";
-      document.querySelectorAll('a[href*="calendly.com/giulio-amenitiz"], a[href*="meetings.hubspot.com/alexis-fillat"]').forEach(function (a) {
+      var bookingUrl = profile ? profile.bookingUrl : "https://calendly.com/giulio-amenitiz/30min";
+      var bookingSelectors = Object.keys(AM_PROFILES).map(function (k) {
+        // Match by the meaningful path segment of each AM's booking URL.
+        var m = AM_PROFILES[k].bookingUrl.match(/hubspot\.com\/([^/?#]+)/);
+        return m ? 'a[href*="meetings.hubspot.com/' + m[1] + '"]' : null;
+      }).filter(Boolean).concat(['a[href*="calendly.com/giulio-amenitiz"]']).join(", ");
+      document.querySelectorAll(bookingSelectors).forEach(function (a) {
         if (a.href !== bookingUrl) a.href = bookingUrl;
       });
 
@@ -1218,11 +1260,14 @@
     }
 
     var initialLang = detectLang();
+    var initialAm = initialLang === "fr" ? detectAm() : DEFAULT_AM;
 
     document.addEventListener("DOMContentLoaded", function () {
       applyTranslations(initialLang);
       updateUrlLang(initialLang);
+      if (initialLang === "fr") updateUrlAm(initialAm);
       try { localStorage.setItem("amenitizspend_lang", initialLang); } catch (e) {}
+      try { localStorage.setItem("amenitizspend_am", initialAm); } catch (e) {}
       var sel = document.getElementById("langSelect");
       if (sel) {
         sel.value = initialLang;
@@ -1327,7 +1372,7 @@
         });
       }
 
-      document.querySelectorAll('a[href*="calendly.com/giulio-amenitiz"], a[href*="meetings.hubspot.com/alexis-fillat"]').forEach(function (link) {
+      document.querySelectorAll('a[href*="calendly.com/giulio-amenitiz"], a[href*="meetings.hubspot.com/alexis-fillat"], a[href*="meetings.hubspot.com/julia-nguyen1"]').forEach(function (link) {
         link.addEventListener("click", function (e) {
           if (!formHasData()) return;
 
